@@ -273,7 +273,8 @@ Features
    and module manifests.
 
    The PowerShell language parser leverages tree-sitter to identify and extract
-   comments from PowerShell source.
+   comments from PowerShell source, associating each marker with the function,
+   filter, class, method or Pester block it annotates.
 
    ``.ps1``, ``.psm1`` and ``.psd1`` files are auto-discovered when
    ``comment_type = "powershell"``.
@@ -284,6 +285,9 @@ Features
    * Block comments (``<# #>``), comment-based help included, with their
      delimiters stripped for one-line markers, need-id references and
      multi-line needs
+   * Association of comments with functions, filters, classes and methods
+   * Association of comments with Pester's ``Describe``, ``Context`` and ``It``
+     blocks, in any letter case; other commands are no scope
    * Shebang lines (``#!/usr/bin/env pwsh``) never produce spurious markers
    * A ``#`` line inside a here-string is string content, never a marker, even
      where the grammar parses it as a comment
